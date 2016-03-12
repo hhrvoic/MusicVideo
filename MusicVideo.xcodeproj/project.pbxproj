@@ -12,6 +12,7 @@
 		EE046DF11C946F4D00D6628F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE046DEF1C946F4D00D6628F /* Main.storyboard */; };
 		EE046DF31C946F4D00D6628F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE046DF21C946F4D00D6628F /* Assets.xcassets */; };
 		EE046DF61C946F4D00D6628F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE046DF41C946F4D00D6628F /* LaunchScreen.storyboard */; };
+		EEFBC7581C947BD900A9E0E0 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFBC7571C947BD900A9E0E0 /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		EE046DF21C946F4D00D6628F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE046DF51C946F4D00D6628F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE046DF71C946F4D00D6628F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEFBC7571C947BD900A9E0E0 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		EE046DFD1C94743200D6628F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EEFBC7571C947BD900A9E0E0 /* APIManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEFBC7581C947BD900A9E0E0 /* APIManager.swift in Sources */,
 				EE046DEE1C946F4D00D6628F /* ViewController.swift in Sources */,
 				EE046DEC1C946F4D00D6628F /* AppDelegate.swift in Sources */,
 			);
@@ -318,6 +322,7 @@
 				EE046DFC1C946F4D00D6628F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
