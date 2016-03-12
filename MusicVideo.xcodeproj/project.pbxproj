@@ -54,14 +54,46 @@
 		EE046DEA1C946F4D00D6628F /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
-				EE046DEB1C946F4D00D6628F /* AppDelegate.swift */,
-				EE046DED1C946F4D00D6628F /* ViewController.swift */,
-				EE046DEF1C946F4D00D6628F /* Main.storyboard */,
-				EE046DF21C946F4D00D6628F /* Assets.xcassets */,
-				EE046DF41C946F4D00D6628F /* LaunchScreen.storyboard */,
-				EE046DF71C946F4D00D6628F /* Info.plist */,
+				EE046E001C94761F00D6628F /* Supporting files */,
+				EE046DFD1C94743200D6628F /* Model */,
+				EE046DFE1C94744900D6628F /* Controller */,
+				EE046DFF1C9475E300D6628F /* View */,
 			);
 			path = MusicVideo;
+			sourceTree = "<group>";
+		};
+		EE046DFD1C94743200D6628F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EE046DFE1C94744900D6628F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE046DED1C946F4D00D6628F /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EE046DFF1C9475E300D6628F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE046DEF1C946F4D00D6628F /* Main.storyboard */,
+				EE046DF41C946F4D00D6628F /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		EE046E001C94761F00D6628F /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				EE046DEB1C946F4D00D6628F /* AppDelegate.swift */,
+				EE046DF21C946F4D00D6628F /* Assets.xcassets */,
+				EE046DF71C946F4D00D6628F /* Info.plist */,
+			);
+			name = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
