@@ -20,15 +20,21 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func didLoadData(result:String){
-        let alert = UIAlertController(title: (result), message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "Ok" , style: .Default) {
-            action -> Void in
-            //after click logic
+    func didLoadData(result:[MusicVideo]){ //check the data
+        for (index, video) in result.enumerate() {
+            print(index, video.vName)
+            print(video.vImageUrl)
+            print(video.vVideoUrl)
+            print(video.vImId)
+            print(video.vArtist)
+            print(video.vGenre)
+            print(video.vLinkToiTunes)
+            print(video.vPrice)
+            print(video.vRights)
+            print(video.vReleaseDate)
+            
         }
         
-        alert.addAction(okAction)
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 
