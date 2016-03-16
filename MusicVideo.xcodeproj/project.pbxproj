@@ -12,6 +12,7 @@
 		EE046DF11C946F4D00D6628F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE046DEF1C946F4D00D6628F /* Main.storyboard */; };
 		EE046DF31C946F4D00D6628F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE046DF21C946F4D00D6628F /* Assets.xcassets */; };
 		EE046DF61C946F4D00D6628F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE046DF41C946F4D00D6628F /* LaunchScreen.storyboard */; };
+		EEA9B59C1C99A9D7002C19F7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA9B59B1C99A9D7002C19F7 /* Reachability.m */; };
 		EEF7FA4B1C9712BA004587F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FA4A1C9712BA004587F1 /* Constants.swift */; };
 		EEF7FA4D1C9714A8004587F1 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF7FA4C1C9714A8004587F1 /* MusicVideo.swift */; };
 		EEFBC7581C947BD900A9E0E0 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFBC7571C947BD900A9E0E0 /* APIManager.swift */; };
@@ -25,6 +26,9 @@
 		EE046DF21C946F4D00D6628F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE046DF51C946F4D00D6628F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE046DF71C946F4D00D6628F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEA9B59A1C99A9D7002C19F7 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		EEA9B59B1C99A9D7002C19F7 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		EEA9B59E1C99AA63002C19F7 /* MusicVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		EEF7FA4A1C9712BA004587F1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EEF7FA4C1C9714A8004587F1 /* MusicVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 		EEFBC7571C947BD900A9E0E0 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		EE046DEA1C946F4D00D6628F /* MusicVideo */ = {
 			isa = PBXGroup;
 			children = (
+				EEA9B5961C99A989002C19F7 /* Obj-c */,
 				EEF7FA491C97129C004587F1 /* Utils */,
 				EE046E001C94761F00D6628F /* Supporting files */,
 				EE046DFD1C94743200D6628F /* Model */,
@@ -103,6 +108,16 @@
 				EE046DF71C946F4D00D6628F /* Info.plist */,
 			);
 			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		EEA9B5961C99A989002C19F7 /* Obj-c */ = {
+			isa = PBXGroup;
+			children = (
+				EEA9B59A1C99A9D7002C19F7 /* Reachability.h */,
+				EEA9B59B1C99A9D7002C19F7 /* Reachability.m */,
+				EEA9B59E1C99AA63002C19F7 /* MusicVideo-Bridging-Header.h */,
+			);
+			name = "Obj-c";
 			sourceTree = "<group>";
 		};
 		EEF7FA491C97129C004587F1 /* Utils */ = {
@@ -188,6 +203,7 @@
 				EE046DEE1C946F4D00D6628F /* ViewController.swift in Sources */,
 				EEF7FA4D1C9714A8004587F1 /* MusicVideo.swift in Sources */,
 				EE046DEC1C946F4D00D6628F /* AppDelegate.swift in Sources */,
+				EEA9B59C1C99A9D7002C19F7 /* Reachability.m in Sources */,
 				EEF7FA4B1C9712BA004587F1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,10 +317,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MusicVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hr.hhrvoic.MusicVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicVideo/MusicVideo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -312,10 +331,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MusicVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hr.hhrvoic.MusicVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MusicVideo/MusicVideo-Bridging-Header.h";
 			};
 			name = Release;
 		};
