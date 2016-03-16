@@ -10,9 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var displayLabel: UILabel!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"reachabilityStatusChanged", name: "ReachStatusChanged", object: nil) //listen for notification which is posted in app delegate
+        reachabilityStatusChanged()
+        
         let api = APIManager ()
         api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: didLoadData)
     }
@@ -38,7 +43,23 @@ class ViewController: UIViewController {
         }
         
     }
+    func reachabilityStatusChanged() {
+        switch reachabilityStatus {
+            case NOACCESS:
+                view.backgroundColor = UIColor.redColor()
+                displayLabel.text = "No internet connection"
+            case WIFI:
+                view.backgroundColor = UIColor.yellowColor()
+                displayLabel.text = "Connected on WIFI"
+            case WWAN: view.backgroundColor = UIColor.greenColor()
+                displayLabel.text = "Connected on mobile data"
+            default:return
+        }
+    }
     
+    deinit { //when closing viewcontroller (deinitialization) remove observer
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:"ReachStatusChanged", object: nil)
+    }
 
 }
 
