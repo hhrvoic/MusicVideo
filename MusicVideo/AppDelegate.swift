@@ -10,7 +10,7 @@ import UIKit
 
 //global (app global) variables
 var reachability : Reachability?
-var reachabilityStatus = WIFI
+var reachabilityStatus = ""
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil) //when you change netowrk status kReachabilityChangedNotification gets updated 
         
-        internetCheck = Reachability.reachabilityForInternetConnection() //object for observing network change
+        internetCheck = Reachability.reachabilityForInternetConnection() //reachability (singleton) object for observing network change
         internetCheck?.startNotifier() //start loop-checking the network status for change
+        statusChangedWithReachability(internetCheck!)
+        
         return true
     }
     func reachabilityChanged(notification: NSNotification) {
