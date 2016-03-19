@@ -18,8 +18,7 @@ class MusicVideoTVC: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"reachabilityStatusChanged", name: "ReachStatusChanged", object: nil) //listen for notification which is posted in app delegate
         reachabilityStatusChanged()
         
-        let api = APIManager ()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=50/json", completion: didLoadData)
+       
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,32 +28,39 @@ class MusicVideoTVC: UITableViewController {
     func didLoadData(result:[MusicVideo]){ //check the data
         videos = result
         print(reachabilityStatus)
-        for (index, video) in result.enumerate() {
-            print(index, video.vName)
-            print(video.vImageUrl)
-            print(video.vVideoUrl)
-            print(video.vImId)
-            print(video.vArtist)
-            print(video.vGenre)
-            print(video.vLinkToiTunes)
-            print(video.vPrice)
-            print(video.vRights)
-            print(video.vReleaseDate)
-            
-        }
-         tableView.reloadData()
+        tableView.reloadData()
     }
     func reachabilityStatusChanged() {
+        
         switch reachabilityStatus {
         case NOACCESS:
+            
             view.backgroundColor = UIColor.redColor()
-            //displayLabel.text = "No internet connection"
-        case WIFI:
-            view.backgroundColor = UIColor.yellowColor()
-            //displayLabel.text = "Connected on WIFI"
-        case WWAN: view.backgroundColor = UIColor.greenColor()
-        //displayLabel.text = "Connected on mobile data"
-        default:return
+            dispatch_async(dispatch_get_main_queue())//"Presenting view controllers on detached view controllers is discouraged fix" warning (apple bug)
+                {
+                let alert = UIAlertController(title: "No internet access", message: "Make sure you are connected to the internet", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Default) {
+                    action -> () in
+                    print ("cancel")
+                }
+                let okAction = UIAlertAction(title: "Ok", style:.Default) {
+                    action -> Void in
+                    print ("ok")
+                }
+                let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) {
+                    action -> () in
+                    print ("delete")
+                }
+                alert.addAction(okAction)
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+          
+        default:
+            if videos.count == 0 {
+                loadDataFromAPI()
+            }
         }
     }
     
@@ -63,7 +69,10 @@ class MusicVideoTVC: UITableViewController {
     }
     
   
-
+    func loadDataFromAPI(){
+        let api = APIManager ()
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=50/json", completion: didLoadData)
+    }
     // MARK: - Table view data source
 
     
