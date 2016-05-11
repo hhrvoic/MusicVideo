@@ -31,8 +31,9 @@ class APIManager {
                                         {
                                             
                                             var musicVideos = [MusicVideo]()
-                                            for entry in musicVideosEntries {
+                                            for (index,entry) in musicVideosEntries.enumerate() {
                                                 let musicVideo = MusicVideo (data: entry as! JSONDictionary)
+                                                musicVideo.vRank = index + 1
                                                 musicVideos.append(musicVideo)
                                             }
                                             let priority = DISPATCH_QUEUE_PRIORITY_HIGH
