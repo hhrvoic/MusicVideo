@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Music VideoTVC-->
@@ -14,29 +15,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="k9C-dd-WWv" detailTextLabel="GSr-Cy-cwt" style="IBUITableViewCellStyleSubtitle" id="wNk-c6-pql">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="132" id="wNk-c6-pql" customClass="MusicVideoTableViewCell" customModule="MusicVideo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wNk-c6-pql" id="0DO-rZ-xGK">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="131"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k9C-dd-WWv">
-                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97P-Xp-uda">
+                                            <rect key="frame" x="165" y="8" width="34" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="34" id="EPc-J4-aMl"/>
+                                                <constraint firstAttribute="height" constant="21" id="Q0c-Qf-kdS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GSr-Cy-cwt">
-                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MY-zq-xZ1">
+                                            <rect key="frame" x="165" y="37" width="427" height="86"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C6U-eq-6oB">
+                                            <rect key="frame" x="8" y="8" width="149" height="115"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="149" id="vNm-ex-I89"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="C6U-eq-6oB" firstAttribute="top" secondItem="0DO-rZ-xGK" secondAttribute="topMargin" id="JQJ-Xp-3Zl"/>
+                                        <constraint firstItem="1MY-zq-xZ1" firstAttribute="top" secondItem="97P-Xp-uda" secondAttribute="bottom" constant="8" symbolic="YES" id="JsQ-qf-dRf"/>
+                                        <constraint firstItem="97P-Xp-uda" firstAttribute="leading" secondItem="C6U-eq-6oB" secondAttribute="trailing" constant="8" symbolic="YES" id="avg-Bi-Y6I"/>
+                                        <constraint firstItem="1MY-zq-xZ1" firstAttribute="trailing" secondItem="0DO-rZ-xGK" secondAttribute="trailingMargin" id="bdl-Xg-DBF"/>
+                                        <constraint firstItem="1MY-zq-xZ1" firstAttribute="leading" secondItem="97P-Xp-uda" secondAttribute="leading" id="dWY-VV-N6b"/>
+                                        <constraint firstItem="C6U-eq-6oB" firstAttribute="leading" secondItem="0DO-rZ-xGK" secondAttribute="leadingMargin" id="iN8-Eu-G79"/>
+                                        <constraint firstItem="97P-Xp-uda" firstAttribute="top" secondItem="C6U-eq-6oB" secondAttribute="top" id="k5F-kw-EHe"/>
+                                        <constraint firstItem="C6U-eq-6oB" firstAttribute="bottom" secondItem="1MY-zq-xZ1" secondAttribute="bottom" id="nUF-1R-i90"/>
+                                        <constraint firstItem="1MY-zq-xZ1" firstAttribute="bottom" secondItem="0DO-rZ-xGK" secondAttribute="bottomMargin" id="rDD-aM-IaD"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="musicVideoImage" destination="C6U-eq-6oB" id="K36-Vh-txt"/>
+                                    <outlet property="rankLabel" destination="97P-Xp-uda" id="k0w-vb-x8o"/>
+                                    <outlet property="titleLabel" destination="1MY-zq-xZ1" id="pkI-4Y-raQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

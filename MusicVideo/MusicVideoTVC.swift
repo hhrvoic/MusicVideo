@@ -35,7 +35,7 @@ class MusicVideoTVC: UITableViewController {
         switch reachabilityStatus {
         case NOACCESS:
             
-            view.backgroundColor = UIColor.redColor()
+            //view.backgroundColor = UIColor.redColor()
             dispatch_async(dispatch_get_main_queue())//"Presenting view controllers on detached view controllers is discouraged fix" warning (apple bug)
                 {
                 let alert = UIAlertController(title: "No internet access", message: "Make sure you are connected to the internet", preferredStyle: .Alert)
@@ -71,7 +71,7 @@ class MusicVideoTVC: UITableViewController {
   
     func loadDataFromAPI(){
         let api = APIManager ()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=50/json", completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
     }
     // MARK: - Table view data source
 
@@ -82,12 +82,13 @@ class MusicVideoTVC: UITableViewController {
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-    
+    private struct Storyboard {
+        static let cellIdentifier = "cell"
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let video = videos[indexPath.row]
-        cell.textLabel?.text = ("\(indexPath.row + 1)")
-        cell.detailTextLabel?.text = video.vName
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellIdentifier, forIndexPath: indexPath) as! MusicVideoTableViewCell
+        cell.video = videos[indexPath.row]
+       
         return cell
     }
     
