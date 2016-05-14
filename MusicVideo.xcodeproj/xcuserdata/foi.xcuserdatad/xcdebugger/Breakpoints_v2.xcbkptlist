@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MusicVideo/MusicVideoTableViewCell.swift"
-            timestampString = "484935391.74971"
+            timestampString = "484937284.505576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "updateCell()"
             landmarkType = "5">
          </BreakpointContent>

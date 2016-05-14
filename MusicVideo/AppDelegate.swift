@@ -22,12 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil) //when you change netowrk status kReachabilityChangedNotification gets updated 
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "preferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
         
         internetCheck = Reachability.reachabilityForInternetConnection() //reachability (singleton) object for observing network change
         internetCheck?.startNotifier() //start loop-checking the network status for change
         statusChangedWithReachability(internetCheck!)
         
         return true
+    }
+    func preferedFontChange() {
+        print("prefered font has changed")
     }
     func reachabilityChanged(notification: NSNotification) {
         reachability = notification.object as? Reachability //reachability object contains info about network status
@@ -68,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
            NSNotificationCenter.defaultCenter().removeObserver(self, name: kReachabilityChangedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
 
 
