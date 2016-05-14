@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MusicVideo/MusicVideoTableViewCell.swift"
-            timestampString = "484848457.064105"
+            timestampString = "484935391.74971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "MusicVideoTableViewCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MusicVideo/MusicVideoTableViewCell.swift"
-            timestampString = "484848457.064105"
+            timestampString = "484935391.74971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "updateCell()"
             landmarkType = "5">
          </BreakpointContent>
