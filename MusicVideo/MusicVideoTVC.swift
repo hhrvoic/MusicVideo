@@ -82,9 +82,7 @@ class MusicVideoTVC: UITableViewController {
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-    private struct Storyboard {
-        static let cellIdentifier = "cell"
-    }
+  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellIdentifier, forIndexPath: indexPath) as! MusicVideoTableViewCell
         cell.video = videos[indexPath.row]
@@ -95,7 +93,19 @@ class MusicVideoTVC: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
-    } // Default is 1 if not implemented
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == Storyboard.musicDetailSegueID){
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let video = videos [indexPath.row]
+                let destVC = segue.destinationViewController as! MusicVideoDetailVC
+                destVC.video = video
+                
+                
+            }
+        }
+    }
+    // Default is 1 if not implemented
 
     /*
     // Override to support conditional editing of the table view.
