@@ -33,6 +33,14 @@ class MusicVideoDetailVC: UIViewController {
             vImageView.image = UIImage(named: "imageNotAvailable")
         }
         // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "preferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+    }
+    func preferedFontChange(){
+        
+        vNameLabel.font=UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+         vCostLabel.font=UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+         vGenreLabel.font=UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+         vRightsLabel.font=UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
     }
 
  
