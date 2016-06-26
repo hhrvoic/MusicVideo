@@ -11,6 +11,8 @@ import UIKit
 class MusicVideoTVC: UITableViewController {
  
     var videos =  [MusicVideo] ()
+    var limit = 10
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -28,6 +30,8 @@ class MusicVideoTVC: UITableViewController {
     func didLoadData(result:[MusicVideo]){ //check the data
         videos = result
         print(reachabilityStatus)
+        navigationController?.navigationBar.titleTextAttributes=[NSForegroundColorAttributeName:UIColor.redColor()]
+        title = "iTunes Top \(limit) music videos"
         tableView.reloadData()
     }
     func reachabilityStatusChanged() {
@@ -64,17 +68,32 @@ class MusicVideoTVC: UITableViewController {
         }
     }
     
+    @IBAction func reresh(sender: UIRefreshControl) {
+        refreshControl?.endRefreshing() //stop the spinner
+        loadDataFromAPI()
+        
+        
+    }
     deinit { //when closing viewcontroller (deinitialization) remove observer
         NSNotificationCenter.defaultCenter().removeObserver(self, name:"ReachStatusChanged", object: nil)
     }
     
   
     func loadDataFromAPI(){
+        getApiCount()
         let api = APIManager ()
-        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=200/json", completion: didLoadData)
+        api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=\(limit)/json", completion: didLoadData)
     }
     // MARK: - Table view data source
-
+    func getApiCount() {
+        if(NSUserDefaults.standardUserDefaults().integerForKey("NumberOfVidsSetting") != 0) {
+            limit = NSUserDefaults.standardUserDefaults().integerForKey("NumberOfVidsSetting")
+        }
+        let formatter = NSDateFormatter()
+        formatter.dateFormat="E, dd MMM yyy HH:mm:ss"
+        let refreshDate = formatter.stringFromDate(NSDate())
+        refreshControl?.attributedTitle = NSAttributedString(string: "\(refreshDate)/")
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count

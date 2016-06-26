@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E42751161D1C0CDB002545C9 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42751151D1C0CDB002545C9 /* AboutVC.swift */; };
 		E4916C3B1CE7A60A00077E83 /* MusicVideoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4916C3A1CE7A60A00077E83 /* MusicVideoDetailVC.swift */; };
 		E4916C3D1CE7ADFF00077E83 /* StoryBoardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4916C3C1CE7ADFF00077E83 /* StoryBoardConstants.swift */; };
 		E4916C3F1CF5C2B600077E83 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4916C3E1CF5C2B600077E83 /* SettingsTVC.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E42751151D1C0CDB002545C9 /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		E4916C3A1CE7A60A00077E83 /* MusicVideoDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoDetailVC.swift; sourceTree = "<group>"; };
 		E4916C3C1CE7ADFF00077E83 /* StoryBoardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryBoardConstants.swift; sourceTree = "<group>"; };
 		E4916C3E1CF5C2B600077E83 /* SettingsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				EE1422C91C9DC28E00CA9E39 /* MusicVideoTableViewCell.swift */,
 				EE046DED1C946F4D00D6628F /* ViewController.swift */,
 				E4916C3E1CF5C2B600077E83 /* SettingsTVC.swift */,
+				E42751151D1C0CDB002545C9 /* AboutVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				E4916C3F1CF5C2B600077E83 /* SettingsTVC.swift in Sources */,
 				EE1422CA1C9DC28F00CA9E39 /* MusicVideoTableViewCell.swift in Sources */,
 				EE046DEC1C946F4D00D6628F /* AppDelegate.swift in Sources */,
+				E42751161D1C0CDB002545C9 /* AboutVC.swift in Sources */,
 				EEA9B59C1C99A9D7002C19F7 /* Reachability.m in Sources */,
 				EEF7FA4B1C9712BA004587F1 /* Constants.swift in Sources */,
 				EEA9B5A01C9CBCD4002C19F7 /* MusicVideoTVC.swift in Sources */,

@@ -23,6 +23,32 @@ class SettingsTVC: UITableViewController {
         tableView.alwaysBounceVertical = false
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "preferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+        title = "Settings" 
+        swTouchId.on=NSUserDefaults.standardUserDefaults().boolForKey("SecSetting")
+        swImageQuality.on = NSUserDefaults.standardUserDefaults().boolForKey("ImgSetting")
+        if NSUserDefaults().integerForKey("NumberOfVidsSetting") == 0
+        {
+            slidApiCount.value = 10.0
+        }else {
+            slidApiCount.value = Float(NSUserDefaults().integerForKey("NumberOfVidsSetting"))
+        }
+        lblApiCount.text = String(Int(slidApiCount.value))
+    }
+    @IBAction func numberOfVidSettChanged(sender: UISlider) {
+        let numberOfVids:Int = Int(slidApiCount.value)
+        lblApiCount.text = String (numberOfVids)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setInteger(numberOfVids, forKey: "NumberOfVidsSetting")
+    }
+    @IBAction func touchIdSecurityChanged(sender: UISwitch) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(swTouchId.on, forKey: "SecSetting")
+        
+       
+    }
+    @IBAction func imageSettingChanged(sender: UISwitch) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(swImageQuality.on, forKey: "ImgSetting")
     }
     func preferedFontChange(){
         lblAboutDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
@@ -30,7 +56,7 @@ class SettingsTVC: UITableViewController {
         lblFeedbackDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         lblImageDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
         lblSecurityDisplay.font = UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline)
-
+        
         
     }
     
