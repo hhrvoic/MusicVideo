@@ -37,6 +37,27 @@ class MusicVideoDetailVC: UIViewController {
         // Do any additional setup after loading the view.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "preferedFontChange", name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
+    @IBAction func socialMedia(sender: UIBarButtonItem) {
+        shareMedia()
+    }
+    func shareMedia () {
+        let activities: [String] = [
+            "Have you had the opportunity to see this video?",
+            ("\(video.vName) by \(video.vArtist)"),
+            "Watch it and tell me what you think?",
+             video.vLinkToiTunes,
+            "Shared with the Music Video App" ]
+            
+      let activityVC: UIActivityViewController  = UIActivityViewController(activityItems: activities , applicationActivities:nil)
+        activityVC.completionWithItemsHandler = {
+            (activity, success, items, error) in
+            if(activity == UIActivityTypeMail) {
+                print("email selected")
+            }
+        }
+        self.presentViewController(activityVC, animated: true, completion: nil)
+        
+    }
     func preferedFontChange(){
         
         vNameLabel.font=UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
