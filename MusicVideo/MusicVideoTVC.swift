@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MusicVideoTVC: UITableViewController {
+class MusicVideoTVC: UITableViewController, UISearchResultsUpdating{
  
     var videos =  [MusicVideo] ()
     var filteredVideos = [MusicVideo] ()
@@ -36,14 +36,12 @@ class MusicVideoTVC: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes=[NSForegroundColorAttributeName:UIColor.redColor()]
         
         //searchbar setup 
-        
+        resultSearchController.searchResultsUpdater = self
         definesPresentationContext = true
         resultSearchController.dimsBackgroundDuringPresentation = false
         resultSearchController.searchBar.placeholder = "Search for artist/video/..."
         resultSearchController.searchBar.searchBarStyle = .Prominent
-        
         tableView.tableHeaderView=resultSearchController.searchBar
-        
         title = "iTunes Top \(limit) music videos"
         tableView.reloadData()
     }
@@ -82,8 +80,13 @@ class MusicVideoTVC: UITableViewController {
     }
     
     @IBAction func reresh(sender: UIRefreshControl) {
-        refreshControl?.endRefreshing() //stop the spinner
-        loadDataFromAPI()
+           refreshControl?.endRefreshing() //stop the spinner
+        if resultSearchController.active {
+            refreshControl?.attributedTitle = NSAttributedString(string: "No refresh allowed in search")
+        } else {
+     
+            loadDataFromAPI()
+        }
         
         
     }
@@ -109,7 +112,7 @@ class MusicVideoTVC: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if resultSearchController.active {
+        if resultSearchController.active && resultSearchController.searchBar.text != ""{
             return filteredVideos.count
         }
         return videos.count
@@ -120,7 +123,7 @@ class MusicVideoTVC: UITableViewController {
   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.cellIdentifier, forIndexPath: indexPath) as! MusicVideoTableViewCell
-        if resultSearchController.active {
+        if resultSearchController.active && resultSearchController.searchBar.text != "" {
             cell.video = filteredVideos[indexPath.row]
         }
         else {
@@ -138,7 +141,7 @@ class MusicVideoTVC: UITableViewController {
         if(segue.identifier == Storyboard.musicDetailSegueID){
             if let indexPath = tableView.indexPathForSelectedRow{
                 let video : MusicVideo
-                if resultSearchController.active {
+                if resultSearchController.active && resultSearchController.searchBar.text != "" {
                    video = filteredVideos[indexPath.row]
                 }
                 else {
@@ -151,7 +154,22 @@ class MusicVideoTVC: UITableViewController {
             }
         }
     }
-    // Default is 1 if not implemented
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        searchController.searchBar.text?.lowercaseString
+        filterSearch(searchController.searchBar.text!)
+
+    }
+    func filterSearch (searchText:String){
+        filteredVideos = videos.filter {
+            videos in
+            return
+            videos.vArtist.lowercaseString.containsString(searchText.lowercaseString) || videos.vName.lowercaseString.containsString(searchText.lowercaseString) || videos.vGenre.lowercaseString.containsString(searchText.lowercaseString)
+            
+            }
+        tableView.reloadData()
+    }
+        
+        // Default is 1 if not implemented
 
     /*
     // Override to support conditional editing of the table view.
