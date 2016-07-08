@@ -84,7 +84,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
   
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
-    } // Default is 1 if not implemented
+    } // Default is 1 if not sEARCH
 
 }
+
 
